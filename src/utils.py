@@ -31,10 +31,7 @@ def load_notes(file_path):
 
 
 def validate_date_format(date_str):
-    """
-    Validates date string is in YYYY-MM-DD format.
-    Returns True if valid, else False.
-    """
+
     try:
         datetime.strptime(date_str, "%Y-%m-%d")
         return True
@@ -43,9 +40,7 @@ def validate_date_format(date_str):
 
 
 def save_usage_log(log_path, user, success=True, failed_reason=None):
-    """
-    Appends login/logout activity to Usage_Log.csv.
-    """
+
     try:
         fieldnames = ["Username", "Role", "Login Time", "Actions", "Status", "Reason"]
         log_entry = user.get_log_data() if user else {
@@ -58,7 +53,7 @@ def save_usage_log(log_path, user, success=True, failed_reason=None):
         log_entry["Status"] = "Success" if success else "Failed"
         log_entry["Reason"] = failed_reason if not success else "N/A"
 
-        # Write header only if file is empty
+
         try:
             with open(log_path, mode='r', encoding='utf-8') as testfile:
                 header_exists = bool(testfile.readline().strip())

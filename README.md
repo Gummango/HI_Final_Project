@@ -22,11 +22,27 @@ The program includes a login system and gives access based on different user rol
 
 ## 2. How to Run It
 
-1. Open the project in PyCharm or any Python editor
-2. Make sure you are in the main project folder
-3. Run the following command in the terminal:
-4. A login window will appear
-5. Use a username and password from the Credentials.csv file to log in
+### Step-by-Step Instructions:
+
+1. **Download or clone** this GitHub repository: https://github.com/Gummango/HI_Final_Project.git
+2. **Open the project in PyCharm** (or any Python IDE)
+
+3. Make sure you have Python 3.8 or later installed.
+
+4. Install the required packages by running this in the terminal: pip install -r requirements.txt
+5. Run the program using: python main.py
+
+6. The login screen will appear.  
+Use a valid username and password from the `data/Credentials.csv` file.
+
+7. After logging in, you will see a menu with buttons based on your role (admin, nurse, etc.)
+
+---
+
+>  If running from a different IDE or text editor, make sure the working directory is set to the project root.
+
+
+
 
 ## 3. Roles and What They Can Do
 

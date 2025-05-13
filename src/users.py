@@ -43,10 +43,7 @@ class Management(User):
 
 # Credential verification
 def authenticate_user(credentials_file, input_username, input_password):
-    """
-    Reads the credentials CSV file and verifies if the username and password match.
-    Returns a User object if successful, else None.
-    """
+
     try:
         with open(credentials_file, mode='r', newline='', encoding='utf-8') as file:
             reader = csv.DictReader(file)

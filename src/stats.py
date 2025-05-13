@@ -5,9 +5,7 @@ from datetime import datetime
 
 
 def plot_visit_trends(file_path, save_path="visit_trend.png"):
-    """
-    Plots number of visits per day as a line graph.
-    """
+
     visit_counts = defaultdict(int)
     try:
         with open(file_path, mode='r', encoding='utf-8') as f:
@@ -33,9 +31,7 @@ def plot_visit_trends(file_path, save_path="visit_trend.png"):
 
 
 def plot_insurance_distribution(file_path, save_path="insurance_distribution.png"):
-    """
-    Plots a pie chart showing distribution of insurance types.
-    """
+
     insurance_counts = defaultdict(int)
     try:
         with open(file_path, mode='r', encoding='utf-8') as f:
@@ -58,9 +54,7 @@ def plot_insurance_distribution(file_path, save_path="insurance_distribution.png
 
 
 def plot_demographics_by_age(file_path, save_path="age_distribution.png"):
-    """
-    Plots a histogram of patient ages.
-    """
+
     ages = []
     try:
         with open(file_path, mode='r', encoding='utf-8') as f:
