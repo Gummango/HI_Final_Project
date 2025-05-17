@@ -194,3 +194,4 @@ Patient_ID,Visit_ID,Visit_time,Visit_department,Age,Gender,Race,Ethnicity,Insura
 965888,521393,4/28/2001,Pediatrics,51,Male,Black,Unknown,Medicare,53609,Unknown
 965888,671696,12/21/2003,Surgery,48,Male,Black,Unknown,Medicare,53609,Unknown
 992758,587636,10/19/2014,Pediatrics,8,Male,Pacific Islanders,Other,Blueshield,53587,back pain
+12334,e5e479ea-619b-4315-83b1-f3fa0643824d,2002-08-22,CARDIOLOGY,22,Male,Asian,Other,Medicore,53211,heartattack

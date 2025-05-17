@@ -50,17 +50,13 @@ class Patient:
         self.visits.append(visit)
 
     def most_recent_visit(self):
-        if not self.visits:
-            return None
+        def parse_date_safe(visit):
+            try:
+                return datetime.strptime(visit.visit_time, "%m/%d/%Y")
+            except ValueError:
+                return datetime.min
 
-        def most_recent_visit(self):
-            def parse_date_safe(visit):
-                try:
-                    return datetime.strptime(visit.visit_time, "%Y-%m-%d")
-                except ValueError:
-                    return datetime.min  # fallback for bad date format
-
-            return max(self.visits, key=parse_date_safe) if self.visits else None
+        return max(self.visits, key=parse_date_safe) if self.visits else None
 
 
 class PatientDatabase:
@@ -72,20 +68,32 @@ class PatientDatabase:
             with open(file_path, mode='r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    patient_id = row["Patient_ID"]
-                    visit = Visit(
-                        row["Visit_ID"], row["Visit_time"], row["Visit_department"],
-                        row["Age"], row["Gender"], row["Race"], row["Ethnicity"],
-                        row["Insurance"], row["Zip_code"], row["Chief_complaint"]
-                    )
-                    if patient_id not in self.patients:
-                        self.patients[patient_id] = Patient(patient_id)
-                    self.patients[patient_id].add_visit(visit)
+                    try:
+                        patient_id = row["Patient_ID"]
+                        visit = Visit(
+                            row["Visit_ID"],
+                            row["Visit_time"],
+                            row["Visit_department"],
+                            row["Age"],
+                            row["Gender"],
+                            row["Race"],
+                            row["Ethnicity"],
+                            row["Insurance"],
+                            row.get("Zip_code") or row.get("Zip code"),
+                            row.get("Chief_complaint") or row.get("Chief complaint")
+                        )
+
+                        if patient_id not in self.patients:
+                            self.patients[patient_id] = Patient(patient_id)
+
+                        self.patients[patient_id].add_visit(visit)
+                        print(f"Loading patient: {patient_id}")
+                        print(f"Visit created: {visit.__dict__}")
+
+                    except Exception as e:
+                        print(f"Error creating visit for patient {row.get('Patient_ID', '?')}: {e}")
         except Exception as e:
             print(f"Error reading patient data: {e}")
-        print(f"Loading patient: {patient_id}")
-        print(f"Visit row: {row}")
-        print(f"Visit created: {visit.__dict__}")
 
     def save_to_csv(self, file_path):
         try:

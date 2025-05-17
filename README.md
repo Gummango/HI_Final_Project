@@ -90,8 +90,8 @@ project-folder/
 
 ## Author:
 
-Giridhar Kommalapati
-Master's – Information Science And Technology
+Giridhar Kommalapati, 
+Master's – Information Science And Technology, 
 University of Wisconsin-Milwaukee
 
 
